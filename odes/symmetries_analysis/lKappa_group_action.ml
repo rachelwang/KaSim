@@ -236,9 +236,9 @@ let backtrack sigma_inv sigma_raw_inv counter positions rule =
 
 let for_all_elt_permutation
     (positions:int list)
-    (f:LKappa.rule_agent -> LKappa.rule -> 'a -> 'a * bool )
-    (f_raw:Raw_mixture.agent -> LKappa.rule -> 'a -> 'a * bool)
-    (rule:LKappa.rule)
+    (f:LKappa.rule_agent -> LKappa.rule_agent LKappa.rule -> 'a -> 'a * bool )
+    (f_raw:Raw_mixture.agent -> LKappa.rule_agent LKappa.rule -> 'a -> 'a * bool)
+    (rule:LKappa.rule_agent LKappa.rule)
     (init:'a)  =
   let rec next agent_id rule_tail pos_id positions_tail accu =
     match positions_tail with
@@ -279,8 +279,8 @@ let for_all_over_orbit
     (sigma_inv:LKappa.rule_agent -> unit)
     (sigma_raw:Raw_mixture.agent -> unit)
     (sigma_raw_inv:Raw_mixture.agent -> unit)
-    (f: LKappa.rule -> 'a -> 'a * bool)
-    (rule:LKappa.rule)
+    (f: LKappa.rule_agent LKappa.rule -> 'a -> 'a * bool)
+    (rule:LKappa.rule_agent LKappa.rule)
     (init:'a) : 'a * bool =
     let n = List.length positions in
     let counter = Array.make n false in
@@ -636,8 +636,8 @@ let fold_over_elt_transformation
     get_sym_internal_states
     get_sym_binding_states
     get_sym_full_states
-    (rule: LKappa.rule)
-    (f:LKappa.rule -> 'a -> 'a)
+    (rule: LKappa.rule_agent LKappa.rule)
+    (f:LKappa.rule_agent LKappa.rule -> 'a -> 'a)
     (*acc*)
     (accu: 'a) : 'a =
   (*position is a list of agent*)

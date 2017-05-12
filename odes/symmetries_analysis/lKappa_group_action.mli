@@ -28,7 +28,7 @@ val check_orbit_internal_state_permutation:
   agent_type:int ->
   site1:int ->
   site2:int ->
-  LKappa.rule ->
+  LKappa.rule_agent LKappa.rule ->
   correct:(int array) -> (*what i have to divide to get gamma *)
   ('a, 'b) Alg_expr.e Locality.annot Rule_modes.RuleModeMap.t array ->
   LKappa_auto.cache ->
@@ -51,7 +51,7 @@ val check_orbit_binding_state_permutation:
   agent_type:int ->
   site1:int ->
   site2:int ->
-  LKappa.rule ->
+  LKappa.rule_agent LKappa.rule ->
   correct:(int array) ->
   ('a, 'b) Alg_expr.e Locality.annot Rule_modes.RuleModeMap.t array ->
   LKappa_auto.cache ->
@@ -74,7 +74,7 @@ val check_orbit_full_permutation:
   agent_type:int ->
   site1:int ->
   site2:int ->
-  LKappa.rule ->
+  LKappa.rule_agent LKappa.rule ->
   correct:(int array) ->
   ('a, 'b) Alg_expr.e Locality.annot Rule_modes.RuleModeMap.t array ->
   LKappa_auto.cache ->
@@ -87,7 +87,7 @@ val is_invariant_internal_states_permutation:
   agent_type:int ->
   site1:int ->
   site2:int ->
-  LKappa.rule ->
+  LKappa.rule_agent LKappa.rule ->
   LKappa_auto.cache ->
   LKappa_auto.cache * bool
 
@@ -97,7 +97,7 @@ val is_invariant_binding_states_permutation:
   agent_type:int ->
   site1:int ->
   site2:int ->
-  LKappa.rule ->
+  LKappa.rule_agent LKappa.rule ->
   LKappa_auto.cache ->
   LKappa_auto.cache * bool
 
@@ -107,7 +107,7 @@ val is_invariant_full_states_permutation:
   agent_type:int ->
   site1:int ->
   site2:int ->
-  LKappa.rule ->
+  LKappa.rule_agent LKappa.rule ->
   LKappa_auto.cache ->
   LKappa_auto.cache * bool
 
@@ -116,10 +116,10 @@ val equiv_class:
   ?sigs:Signature.s ->
   LKappa_auto.cache ->
   bool Mods.DynArray.t ->
-  LKappa.rule ->
+  LKappa.rule_agent LKappa.rule ->
   partitions_internal_states:(int -> int list list) ->
   partitions_binding_states:(int -> int list list) ->
   partitions_full_states:(int -> int list list) ->
   convention:Remanent_parameters_sig.rate_convention ->
   LKappa_auto.cache * bool Mods.DynArray.t *
-  (LKappa.rule * int) list
+  (LKappa.rule_agent LKappa.rule * int) list
